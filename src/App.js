@@ -1,5 +1,4 @@
 import React from 'react';
-// 👇️ import Routes instead of Switch 👇️
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import { MainPage } from "./pages/mainPage"
 import { DoctorsPage } from "./pages/doctorsPage"

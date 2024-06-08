@@ -4,6 +4,7 @@ import { apiDoctors } from "../api/doctors";
 export function TimeListRecord(props) {
     const timeHtml = [];
     const [timeList, timeListSave] = useState([]);
+
     useEffect(() => {
         timeListSave(apiDoctors().doctorsGetTime(props.doctor, props.date));
     }, [props.date, props.doctor])
@@ -15,7 +16,7 @@ export function TimeListRecord(props) {
             if (timeElem.status != 1) {
                 let copy = Object.assign([], timeList);
                 copy[index].status = 1;
-                timeListSave(copy)
+                timeListSave(copy);
             }
         }
         timeHtml.push(<div onClick={click} key={timeElem.time} className={classNameActive}>{timeElem.time} ({textTime}) </div>);
