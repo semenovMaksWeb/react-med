@@ -20,12 +20,13 @@
 .doctorsList {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
 .doctorElement {
     height: 150px;
+    max-width: 200px;
     width: 26%;
     border: 1px solid;
     margin-bottom: 10px;
@@ -43,9 +44,8 @@
 
 .doctorAvatar {
     max-width: 100%;
-    max-height: 100px;
-    width: 100%;
-    height: auto;
+    width: 100px;
+    height: 100px;
 }
 
 h1 {
@@ -60,10 +60,13 @@ h2 {
     height: auto;
     border: 0;
     width: 100%;
+    max-width: 60%;
+    margin: 0 auto;
 }
 
 .doctorPage .doctorAvatar {
-    max-width: 30%;
+    max-width: 300px;
+    min-height: 100px;
 }
 
 .doctorButtonRecord {
