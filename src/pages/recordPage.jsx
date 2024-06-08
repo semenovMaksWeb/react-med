@@ -40,11 +40,19 @@ export function RecordPage() {
     return (
         <div className="recordPage">
             <div className="formFilter">
-                <select value={activeDoctor} onChange={selectDoctorChange}>
-                    {options}
-                </select>
-                <input value={activeDate} onChange={activeDateSaveChange} type="date" />
-                {timeListRecord()}
+                <div>
+                    <label htmlFor="">Врач </label>
+                    <select value={activeDoctor} onChange={selectDoctorChange}>
+                        {options}
+                    </select>
+                </div>
+                <br />
+                <div>
+                    <label htmlFor="">Дата записи </label>
+                    <input value={activeDate} onChange={activeDateSaveChange} type="date" />
+                    {timeListRecord()}
+                </div>
+
             </div>
         </div>
     )

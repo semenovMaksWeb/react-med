@@ -24,7 +24,7 @@ export function TimeListRecord(props) {
 
     return (
         <div className="timeElementList">
-            <h2>Время врача</h2>
+            <h2>Время записи</h2>
             {timeHtml}
         </div>
     )
