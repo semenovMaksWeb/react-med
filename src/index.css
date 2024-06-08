@@ -1,13 +1,82 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.nav {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.link {
+    padding: 2px;
+    margin-left: 10px;
+    text-decoration: none;
+    color: blue;
+    background-color: #fff;
+}
+
+.link:hover {
+    background-color: blue;
+    color: #fff;
+}
+
+.doctorsList {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.doctorElement {
+    height: 150px;
+    width: 26%;
+    border: 1px solid;
+    margin-bottom: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.doctorName {
+    text-align: center;
+    font-size: 10px;
+    margin: 5px 5px;
+}
+
+.doctorAvatar {
+    max-width: 100%;
+    max-height: 100px;
+    width: 100%;
+    height: auto;
+}
+
+h1 {
+    margin: 10px;
+}
+
+.doctorPage .doctorElement {
+    height: auto;
+    border: 0;
+    width: 100%;
+}
+
+.doctorPage .doctorAvatar {
+    max-width: 30%;
+}
+
+.doctorButtonRecord {
+    border-radius: 4px;
+    background: green;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 5px 15px;
+    text-decoration: none;
+}
+
+.doctorButtonRecord:hover {
+    background: #fff;
+    border: 1px solid green;
+    color: green;
+}
+
+.timeElementList {
+    border:  1px solid #000;
 }

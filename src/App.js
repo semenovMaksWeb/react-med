@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from 'react';
+// 👇️ import Routes instead of Switch 👇️
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import { MainPage } from "./pages/mainPage"
+import { DoctorsPage } from "./pages/doctorsPage"
+import { RecordPage } from './pages/recordPage';
+import { DoctorPage } from './pages/doctorPage';
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <nav className="nav">
+          <Link className="link" to="/">Главная</Link>
+          <Link className="link" to="/doctors">Врачи</Link>
+          <Link className="link" to="/record">Запись</Link>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/doctors" element={<DoctorsPage />} />
+          <Route path="/record" element={<RecordPage />} />
+          <Route path="/doctor/:id" element={<DoctorPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
-
-export default App;
