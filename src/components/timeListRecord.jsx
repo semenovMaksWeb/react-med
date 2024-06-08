@@ -8,12 +8,22 @@ export function TimeListRecord(props) {
         timeListSave(apiDoctors().doctorsGetTime(props.doctor, props.date));
     }, [props.date, props.doctor])
 
-    for (const timeElem of timeList) {
-        timeHtml.push(<div key={timeElem.time} className="timeElement">{timeElem.time}</div>);
+    for (const [index, timeElem] of timeList.entries()) {
+        const classNameActive = timeElem.status == 1 ? "timeElement closeTime" : "timeElement";
+        const textTime = timeElem.status == 1 ? "Занято" : "Свободно";
+        const click = () => {
+            if (timeElem.status != 1) {
+                let copy = Object.assign([], timeList);
+                copy[index].status = 1;
+                timeListSave(copy)
+            }
+        }
+        timeHtml.push(<div onClick={click} key={timeElem.time} className={classNameActive}>{timeElem.time} ({textTime}) </div>);
     }
 
     return (
         <div className="timeElementList">
+            <h2>Время врача</h2>
             {timeHtml}
         </div>
     )

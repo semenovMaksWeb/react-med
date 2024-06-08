@@ -52,6 +52,10 @@ h1 {
     margin: 10px;
 }
 
+h2 {
+    margin: 5px;
+}
+
 .doctorPage .doctorElement {
     height: auto;
     border: 0;
@@ -78,5 +82,17 @@ h1 {
 }
 
 .timeElementList {
-    border:  1px solid #000;
+    border: 1px solid #000;
+    margin-top: 20px;
+}
+
+.timeElement {
+    background-color: green;
+    border: 1px solid;
+    cursor: pointer;
+}
+
+.closeTime {
+    background-color: red;
+    cursor: not-allowed;
 }
