@@ -96,3 +96,13 @@ h2 {
     background-color: red;
     cursor: not-allowed;
 }
+
+.historyList {
+    margin-top: 10px;
+}
+
+.historyElem {
+    border: 1px solid;
+    padding: 2px;
+    margin-bottom: 5px;
+}

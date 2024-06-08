@@ -2,7 +2,7 @@ export function HistoryList(props) {
     const historyHtml = [];
     for (const historyElem of props.history) {
         historyHtml.push(
-            <div>
+            <div className="historyElem">
                 <div>Время: {historyElem.date.toString()}</div>
                 <div>Запись: {historyElem.text}</div>
             </div>
