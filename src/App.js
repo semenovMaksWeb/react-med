@@ -5,6 +5,7 @@ import { DoctorsPage } from "./pages/doctorsPage"
 import { RecordPage } from './pages/recordPage';
 import { DoctorPage } from './pages/doctorPage';
 import { HistoryPage } from './pages/historyPage';
+import { AddHistoryPage } from './pages/addHistoryPage';
 export default function App() {
   return (
     <Router>
@@ -13,7 +14,8 @@ export default function App() {
           <Link className="link" to="/">Главная</Link>
           <Link className="link" to="/doctors">Врачи</Link>
           <Link className="link" to="/record">Запись</Link>
-          <Link className="link" to="/history">История</Link>
+          <Link className="link" to="/history">История болезни</Link>
+          <Link className="link" to="/history/add">Добавить запись</Link>
         </nav>
 
         <Routes>
@@ -22,6 +24,7 @@ export default function App() {
           <Route path="/record" element={<RecordPage />} />
           <Route path="/doctor/:id" element={<DoctorPage />} />
           <Route path="/history" element={<HistoryPage />} />
+          <Route path="/history/add" element={<AddHistoryPage />} />
         </Routes>
       </div>
     </Router>

@@ -109,3 +109,12 @@ h2 {
     padding: 2px;
     margin-bottom: 5px;
 }
+
+.formAddHistoryElement {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.formAddHistoryElement label{
+    margin-right: 5px;
+}

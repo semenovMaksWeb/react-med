@@ -39,6 +39,7 @@ export function RecordPage() {
 
     return (
         <div className="recordPage">
+            <h1>Запись к врачу</h1>
             <div className="formFilter">
                 <div>
                     <label htmlFor="">Врач </label>

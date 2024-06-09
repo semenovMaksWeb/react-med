@@ -16,6 +16,7 @@ export function HistoryPage() {
 
     return (
         <div className="historyPage">
+            <h1>История болезни</h1>
             <div>
                 <label htmlFor="">Полис</label><br />
                 <input min="0" type="number" value={polis} onChange={polisChange} />
