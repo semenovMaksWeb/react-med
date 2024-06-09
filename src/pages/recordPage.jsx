@@ -8,10 +8,16 @@ export function RecordPage() {
     const [searchParams] = useSearchParams();
     const [activeDoctor, activeDoctorSave] = useState("");
     const [activeDate, activeDateSave] = useState("");
+    const [polis, polisSave] = useState("");
 
     const selectDoctorChange = (e) => {
         activeDoctorSave(e.target.value);
     }
+
+    const polisSaveChange = (e) => {
+        polisSave(e.target.value);
+    }
+
     const activeDateSaveChange = (e) => {
         activeDateSave(e.target.value);
     }
@@ -22,7 +28,7 @@ export function RecordPage() {
     }
 
     const timeListRecord = () => {
-        if (activeDate && activeDoctor) {
+        if (activeDate && activeDoctor && polis) {
             return <TimeListRecord date={activeDate} doctor={activeDoctor} />
         }
         return <></>
@@ -41,6 +47,13 @@ export function RecordPage() {
         <div className="recordPage">
             <h1>Запись к врачу</h1>
             <div className="formFilter">
+
+                <div>
+                    <label htmlFor=""> Полис </label>
+                    <input value={polis} onChange={polisSaveChange} />
+                </div>
+                <br />
+
                 <div>
                     <label htmlFor="">Врач </label>
                     <select value={activeDoctor} onChange={selectDoctorChange}>
