@@ -9,17 +9,25 @@ export function RecordPage() {
     const [activeDoctor, activeDoctorSave] = useState("");
     const [activeDate, activeDateSave] = useState("");
     const [polis, polisSave] = useState("");
+    const [checkPolis, checkPolisSave] = useState(false);
 
     const selectDoctorChange = (e) => {
         activeDoctorSave(e.target.value);
     }
 
     const polisSaveChange = (e) => {
+        checkPolisSave(false);
         polisSave(e.target.value);
     }
 
     const activeDateSaveChange = (e) => {
         activeDateSave(e.target.value);
+    }
+
+    const checkPolisRun = () => {
+        if (polis) {
+            checkPolisSave(true);
+        }
     }
 
     const doctors = apiDoctors().doctorsAll();
@@ -28,7 +36,7 @@ export function RecordPage() {
     }
 
     const timeListRecord = () => {
-        if (activeDate && activeDoctor && polis) {
+        if (activeDate && activeDoctor && polis && checkPolis) {
             return <TimeListRecord date={activeDate} doctor={activeDoctor} />
         }
         return <></>
@@ -51,6 +59,7 @@ export function RecordPage() {
                 <div>
                     <label htmlFor=""> Полис </label>
                     <input value={polis} onChange={polisSaveChange} />
+                    <button onClick={checkPolisRun}>Проверить полис</button>
                 </div>
                 <br />
 
