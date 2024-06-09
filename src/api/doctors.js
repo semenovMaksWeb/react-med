@@ -25,9 +25,17 @@ export function apiDoctors() {
         return data;
     }
 
+    const receptionSave = async (body) => {
+        const { data } = await axios.post(`${MainApi}/reception`,
+            body
+        );
+        return data;
+    }
+
     return {
         doctorsAll,
         doctorsGetId,
-        doctorsGetTime
+        doctorsGetTime,
+        receptionSave
     }
 }

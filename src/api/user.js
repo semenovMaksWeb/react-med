@@ -14,8 +14,14 @@ export function apiUser() {
         return data;
     }
 
+    const recordUser = async (polis) => {
+        const { data } = await axios.get(`${MainApi}/reception/polis/${polis}`);
+        return data;
+    }
+
     return {
         checkPolisUser,
-        saveUser
+        saveUser,
+        recordUser
     }
 }

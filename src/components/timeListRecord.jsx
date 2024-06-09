@@ -7,7 +7,7 @@ export function TimeListRecord(props) {
 
     useEffect(() => {
         (async () => {
-            timeListSave( await apiDoctors().doctorsGetTime(props.doctor, props.date));
+            timeListSave(await apiDoctors().doctorsGetTime(props.doctor, props.date));
         })()
     }, [props.date, props.doctor])
 
@@ -15,11 +15,18 @@ export function TimeListRecord(props) {
         for (const [index, timeElem] of timeList.entries()) {
             const classNameActive = timeElem.status == 1 ? "timeElement closeTime" : "timeElement";
             const textTime = timeElem.status == 1 ? "Занято" : "Свободно";
-            const click = () => {
+            const click = async () => {
                 if (timeElem.status != 1) {
-                    let copy = Object.assign([], timeList);
-                    copy[index].status = 1;
-                    timeListSave(copy);
+                    console.log(props);
+                    try {
+                        await apiDoctors().receptionSave({ idDoctor: props.doctor, time: timeElem.time, date: props.date, polis: props.polis });
+                        let copy = Object.assign([], timeList);
+                        copy[index].status = 1;
+                        timeListSave(copy);
+                    } catch (e) {
+                        console.error(e);
+                    }
+
                 }
             }
             timeHtml.push(<div onClick={click} key={timeElem.time} className={classNameActive}>{timeElem.time} ({textTime}) </div>);

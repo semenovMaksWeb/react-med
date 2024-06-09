@@ -105,7 +105,7 @@ export function RecordPage() {
 
     const timeListRecord = () => {
         if (activeDate && activeDoctor && polis && checkPolis) {
-            return <TimeListRecord date={activeDate} doctor={activeDoctor} />
+            return <TimeListRecord date={activeDate} doctor={activeDoctor}  polis={polis} />
         }
         return <></>
     }
