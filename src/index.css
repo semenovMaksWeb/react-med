@@ -69,7 +69,9 @@ h2 {
     min-height: 100px;
 }
 
-.doctorButtonRecord {
+.buttonMain {
+    margin-left: 5px;
+    cursor: pointer;
     border-radius: 4px;
     background: green;
     border: 1px solid #fff;
@@ -78,7 +80,7 @@ h2 {
     text-decoration: none;
 }
 
-.doctorButtonRecord:hover {
+.buttonMain:hover {
     background: #fff;
     border: 1px solid green;
     color: green;
@@ -115,6 +117,15 @@ h2 {
     align-items: center;
     margin-bottom: 10px;
 }
-.formAddHistoryElement label{
+
+.formAddHistoryElement label {
     margin-right: 5px;
+}
+
+.errors {
+    color: red;
+}
+
+.formUser input {
+    margin-bottom: 10px;
 }

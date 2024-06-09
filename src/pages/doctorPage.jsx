@@ -20,7 +20,7 @@ export function DoctorPage() {
                 <h1 className="doctorName">{doctor.name}</h1>
                 <img className="doctorAvatar" src={doctor.image} />
                 <p>{doctor.description}</p>
-                <Link to={'/record?doctor=' + doctor.id} className="doctorButtonRecord">Записаться</Link>
+                <Link to={'/record?doctor=' + doctor.id} className="buttonMain">Записаться</Link>
             </div>
         </div>
 
