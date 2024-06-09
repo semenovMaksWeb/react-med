@@ -10,6 +10,7 @@ export function RecordPage() {
     const [activeDate, activeDateSave] = useState("");
     const [polis, polisSave] = useState("");
     const [checkPolis, checkPolisSave] = useState(false);
+    const [doctors, doctorsSave] = useState([]);
 
     const selectDoctorChange = (e) => {
         activeDoctorSave(e.target.value);
@@ -30,10 +31,25 @@ export function RecordPage() {
         }
     }
 
-    const doctors = apiDoctors().doctorsAll();
-    for (const doctor of doctors) {
-        options.push(<option value={doctor.id} key={doctor.id}>{doctor.name}</option>)
+
+    useEffect(() => {
+        (async () => {
+            doctorsSave(await apiDoctors().doctorsAll());
+            const searchDoctor = searchParams.get("doctor");
+            if (+searchDoctor) {
+                activeDoctorSave(searchDoctor);
+            } else if (doctors.length) {
+                activeDoctorSave(doctors[0].id);
+            }
+        })()
+    }, [])
+
+    if (doctors.length) {
+        for (const doctor of doctors) {
+            options.push(<option value={doctor.id} key={doctor.id}>{doctor.name}</option>)
+        }
     }
+
 
     const timeListRecord = () => {
         if (activeDate && activeDoctor && polis && checkPolis) {
@@ -41,15 +57,6 @@ export function RecordPage() {
         }
         return <></>
     }
-
-    useEffect(() => {
-        const searchDoctor = searchParams.get("doctor");
-        if (+searchDoctor) {
-            activeDoctorSave(searchDoctor);
-        } else {
-            activeDoctorSave(doctors[0].id);
-        }
-    }, [])
 
     return (
         <div className="recordPage">
