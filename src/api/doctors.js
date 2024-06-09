@@ -13,6 +13,12 @@ export function apiDoctors() {
         return data;
     }
 
+
+    const doctorUserCheck = async (polis) => {
+        const { data } = await axios.get(`${MainApi}/user/doctor/${polis}`);
+        return data;
+    }
+
     const doctorsGetTime = async (doctor, date) => {
         const { data } = await axios.get(`${MainApi}/reception`,
             {
@@ -36,6 +42,7 @@ export function apiDoctors() {
         doctorsAll,
         doctorsGetId,
         doctorsGetTime,
+        doctorUserCheck,
         receptionSave
     }
 }

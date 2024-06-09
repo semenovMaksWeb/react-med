@@ -1,8 +1,11 @@
 import { useState } from "react"
+import { apiDoctors } from "../api/doctors";
+import { apiHistory } from "../api/history";
 
 export function AddHistoryPage() {
 
-    const [polisUser, polisUserSave] = useState();
+    const [polisUser, polisUserSave] = useState(null);
+    const [polisUserActive, polisUserActiveSave] = useState(null);
     const [polisDoctor, polisDoctorSave] = useState("");
     const [text, textSave] = useState("");
 
@@ -10,13 +13,36 @@ export function AddHistoryPage() {
         polisDoctorSave(e.target.value);
     }
 
-    const checkPolisDoctor = () => {
-        console.log('запрос на бэк который принимает полис врача и если это правда врач возвращает список полисов для дальшейней работы иначе выдает ошибку!');
+    const onChangepolisUserActive = (e) => {
+        polisUserActiveSave(e.target.value);
+    }
+
+    const checkPolisDoctor = async () => {
+        if (polisDoctor) {
+            const data = await apiDoctors().doctorUserCheck(polisDoctor);
+            if (data) {
+                polisUserSave(data)
+            }
+        }
     }
 
     const onChangeText = (e) => {
         textSave(e.target.value);
     }
+
+    const click = async () => {
+        if (polisDoctor && text && polisUserActive) {
+            await apiHistory().save(polisDoctor, polisUserActive, text);
+        }
+    }
+
+    let htmlPolisUser = [];
+    if (polisUser) {
+        for (const polisUserElem of polisUser) {
+            htmlPolisUser.push(<option key={polisUserElem.id} value={polisUserElem.id}>{polisUserElem.fio} {polisUserElem.tlf}</option>);
+        }
+    }
+
 
     return (
         <div className="addHistoryPage">
@@ -29,7 +55,9 @@ export function AddHistoryPage() {
                 </div>
                 <div className="formAddHistoryElement">
                     <label htmlFor="">Полис пациента</label>
-                    <select></select>
+                    <select value={polisUserActive} onChange={onChangepolisUserActive}>
+                        {htmlPolisUser}
+                    </select>
                 </div>
             </div>
 
@@ -37,6 +65,7 @@ export function AddHistoryPage() {
                 <label htmlFor="">Запись пациента</label>
                 <textarea value={text} onChange={onChangeText} />
             </div>
+            <button onClick={click} className="MainButton">Сохранить</button>
         </div>
     )
 }
