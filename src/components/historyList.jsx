@@ -5,7 +5,7 @@ export function HistoryList(props) {
             <div key={historyElem.id} className="historyElem">
                 <div><b>Время:</b> {historyElem.date.toString()}</div>
                 <div><b>Запись:</b> {historyElem.text}</div>
-                <div><b>Врач:</b> {historyElem.doctor.name}</div>
+                <div><b>Врач:</b> {historyElem.doctor.fio}</div>
             </div>
         );
     }

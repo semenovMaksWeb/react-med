@@ -9,8 +9,8 @@ export function HistoryPage() {
         polisSave(e.target.value);
     }
 
-    const click = () => {
-        const history = apiHistory().history();
+    const click = async () => {
+        const history = await apiHistory().history(polis);
         historySave(history);
     }
 
@@ -19,7 +19,7 @@ export function HistoryPage() {
             <h1>История болезни</h1>
             <div>
                 <label htmlFor="">Полис</label><br />
-                <input min="0"  value={polis} onChange={polisChange} />
+                <input min="0" value={polis} onChange={polisChange} />
                 <br />
                 <br />
                 <button onClick={click}>Вывести историю</button>
